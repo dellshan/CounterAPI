@@ -1,0 +1,17 @@
+server:
+  port: 8080
+spring:
+  security:
+    basic:
+      enabled: true
+    user:
+      name: optus
+      password: candidates
+      role: USER
+
+
+
+
+
+
+
