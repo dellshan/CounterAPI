@@ -26,7 +26,7 @@ public class CounterAPIController {
         }
         ArrayList<String> list = map.get("searchText");
         Map<String, Long> hashMap = new HashMap<>();
-        Map<String, Long> fileMap = FileUtil.processFile(new FileReader("sample.txt"));
+        Map<String, Long> fileMap = FileUtil.processFile(new FileReader("src/main/resources/sample.txt"));
         for (String word : list) {
             hashMap.put(word, fileMap.getOrDefault(word, 0L));
         }
@@ -37,7 +37,7 @@ public class CounterAPIController {
 
     @GetMapping(value = "/top/{num}", produces = "text/csv")
     public ResponseEntity generateCsvReport(@PathVariable Long num) throws Exception {
-        Map<String, Long> fileMap = FileUtil.processFile(new FileReader("sample.txt"));
+        Map<String, Long> fileMap = FileUtil.processFile(new FileReader("src/main/resources/sample.txt"));
         Map<String, Long> linkedHashMap =  MapSortUtil.sortByValueDesc(fileMap);
         ByteArrayInputStream byteArrayOutputStream;
         try {
